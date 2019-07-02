@@ -6,10 +6,23 @@ export default class TodoList extends Component {
     todos: []
   };
 
+  componentDidMount() {
+    const myTodos = localStorage.getItem("todos");
+
+    if (myTodos) {
+      this.setState({ todos: JSON.parse(myTodos) });
+    }
+  }
   handleInputChange = e => this.setState({ text: e.target.value });
 
-  handleAddTodo = () =>
-    this.setState({ todos: [...this.state.todos, this.state.text], text: "" });
+  handleAddTodo = () => {
+    this.setState(
+      { todos: [...this.state.todos, this.state.text], text: "" },
+      () => {
+        localStorage.setItem("todos", JSON.stringify(this.state.todos));
+      }
+    );
+  };
 
   render() {
     return (

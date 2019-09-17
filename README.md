@@ -1,4 +1,4 @@
-# :syringe: Testes com Reac JS
+# :syringe: Testes com React JS
 
 - Axios
 - React
